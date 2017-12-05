@@ -1,0 +1,7 @@
+exe example
+  : # sources
+    ../../../src/example/example.cpp
+
+    ../../../project/bb/libll//libll
+    ../../../project/bb/libtl//libtl
+  ;

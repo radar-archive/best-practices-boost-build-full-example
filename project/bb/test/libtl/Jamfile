@@ -1,0 +1,3 @@
+import testing ;
+
+run ../../../../test/tl/test_tl.cpp ../../../../project/bb/libtl//libtl ;

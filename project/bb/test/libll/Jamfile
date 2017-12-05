@@ -1,0 +1,3 @@
+import testing ;
+
+run ../../../../test/ll/test_ll.cpp ../../../../project/bb/libll//libll ;

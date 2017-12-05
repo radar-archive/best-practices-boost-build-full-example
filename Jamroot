@@ -1,0 +1,7 @@
+build-project project/bb/example ;
+
+build-project project/bb/libll ;
+build-project project/bb/test/libll ;
+
+build-project project/bb/libtl ;
+build-project project/bb/test/libtl ;

@@ -1,0 +1,9 @@
+alias libtl
+  : # sources
+     ../../../src/tl/tl.hpp
+  : # requirements
+     <include>../../../src
+  : # build-dir
+  : # usage-requirements
+     <include>../../../src
+  ;

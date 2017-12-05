@@ -1,0 +1,4 @@
+# Boost.Build
+/bin/
+/project/bb/*/bin/
+/project/bb/test/*/bin/

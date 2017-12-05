@@ -1,0 +1,10 @@
+lib libll
+  : # sources
+    ../../../src/ll/ll.hpp
+    ../../../src/ll/ll.cpp
+  : # requirements
+     <include>../../../src
+  : # build-dir
+  : # usage-requirements
+     <include>../../../src
+  ;
