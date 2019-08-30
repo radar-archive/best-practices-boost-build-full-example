@@ -1,3 +1,8 @@
+/// @file
+///
+/// Copyright 2019 RADAR, Inc. - All Rights Reserved
+/// Proprietary and confidential
+
 #ifndef libtl_tl_hpp_
 #define libtl_tl_hpp_
 
