@@ -1,3 +1,8 @@
+# Copyright 2019 RADAR, Inc. - All Rights Reserved
+# Proprietary and confidential
+
+import testing ;
+
 build-project project/bb/example ;
 
 build-project project/bb/libll ;

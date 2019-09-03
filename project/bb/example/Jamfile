@@ -1,3 +1,6 @@
+# Copyright 2019 RADAR, Inc. - All Rights Reserved
+# Proprietary and confidential
+
 exe example
   : # sources
     ../../../src/example/example.cpp

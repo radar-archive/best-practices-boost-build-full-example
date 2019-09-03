@@ -1,3 +1,6 @@
+# Copyright 2019 RADAR, Inc. - All Rights Reserved
+# Proprietary and confidential
+
 import testing ;
 
 run ../../../../test/ll/test_ll.cpp ../../../../project/bb/libll//libll ;
