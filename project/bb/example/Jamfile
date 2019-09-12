@@ -1,10 +1,27 @@
 # Copyright 2019 RADAR, Inc. - All Rights Reserved
 # Proprietary and confidential
 
+import package ;
+
+path-constant root : ../../.. ;
+
 exe example
   : # sources
-    ../../../src/example/example.cpp
+    $(root)/src/example/example.cpp
 
-    ../../../project/bb/libll//libll
-    ../../../project/bb/libtl//libtl
+    $(root)/project/bb/libll//libll
+    $(root)/project/bb/libtl//libtl
+  : # requirements
+    # @todo this requires a newer Boost.Build than CI has
+    # <cxxstd>14
+    <cxxflags>-std=c++14
+  ;
+
+explicit install ;
+package.install install
+  : # requirements
+  : # binaries
+    example
+  : # libraries
+  : # headers
   ;

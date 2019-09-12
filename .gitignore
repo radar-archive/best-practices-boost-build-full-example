@@ -4,4 +4,7 @@
 # Boost.Build
 /bin/
 /project/bb/*/bin/
+/project/bb/*/html/
 /project/bb/test/*/bin/
+
+/installed/

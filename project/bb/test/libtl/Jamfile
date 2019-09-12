@@ -3,4 +3,11 @@
 
 import testing ;
 
-run ../../../../test/tl/test_tl.cpp ../../../../project/bb/libtl//libtl ;
+path-constant root : ../../../.. ;
+
+alias support
+  : # sources
+    $(root)/project/bb/libtl//libtl
+  ;
+
+run $(root)/test/tl/test_tl.cpp support ;
