@@ -13,16 +13,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '''
-                bjam --verbose-test -j 8 -a project/bb/example variant=debug variant=release
-                '''
+                sh 'bjam --verbose-test -j 8 -a project/bb/example variant=debug variant=release'
             }
         }
         stage('Test') {
             steps {
-                sh '''
-                bjam --verbose-test -j 8 -a variant=debug variant=release
-                '''
+                sh 'bjam --verbose-test -j 8 -a variant=debug variant=release'
             }
         }
     }
