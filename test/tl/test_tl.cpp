@@ -1,7 +1,7 @@
+// Copyright 2019 RADAR, Inc. - All Rights Reserved
+// Proprietary and confidential
+
 /// @file
-///
-/// Copyright 2019 RADAR, Inc. - All Rights Reserved
-/// Proprietary and confidential
 
 #include <iostream>
 
