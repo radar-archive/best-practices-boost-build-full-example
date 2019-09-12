@@ -14,6 +14,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'bjam --verbose-test -j 8 -a project/bb/example variant=debug variant=release'
+
+                recordIssues(tools: [gcc4()])
             }
         }
         stage('Test') {
