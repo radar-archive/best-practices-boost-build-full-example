@@ -1,12 +1,93 @@
 # Copyright 2019 RADAR, Inc. - All Rights Reserved
 # Proprietary and confidential
 
+import package ;
+
+path-constant root : ../../.. ;
+
+local headers =
+  $(root)/src/tl/tl.hpp
+  ;
+local sources =
+  ;
+
+explicit install ;
+alias install
+  : # sources
+    install-library
+    install-documentation
+  ;
+
+explicit install-library ;
+package.install install-library
+  : # requirements
+    <install-source-root>$(root)/src
+  : # binaries
+  : # libraries
+    libtl
+  : # headers
+    $(headers)
+  ;
+
+explicit install-documentation ;
+package.install-data install-documentation
+  : # package-name
+    libtl
+  : # data
+    api.html
+  : # requirements
+  ;
+
 alias libtl
   : # sources
-     ../../../src/tl/tl.hpp
+    $(headers)
+    $(sources)
   : # requirements
-     <include>../../../src
+     <include>$(root)/src
   : # build-dir
   : # usage-requirements
-     <include>../../../src
+     <include>$(root)/src
+  ;
+
+explicit api.html ;
+doxygen api.html
+  : # sources
+    $(headers)
+    $(sources)
+  : # requirements
+    <doxygen:param>QUIET=YES
+
+    <doxygen:param>PROJECT_NAME="\"libtl\""
+    <doxygen:param>PROJECT_NUMBER="\"dev\""
+    <doxygen:param>PROJECT_BRIEF="\"A C++ template library.\""
+
+    <doxygen:param>INLINE_INHERITED_MEMB=YES
+    <doxygen:param>STRIP_FROM_PATH="\"$(root)/src\""
+    <doxygen:param>STRIP_FROM_INC_PATH="\"$(root)/src\""
+
+    <doxygen:param>EXTRACT_ALL=YES
+    <doxygen:param>EXTRACT_PRIVATE=YES
+    <doxygen:param>EXTRACT_PACKAGE=YES
+    <doxygen:param>EXTRACT_STATIC=YES
+    <doxygen:param>EXTRACT_LOCAL_CLASSES=YES
+    <doxygen:param>EXTRACT_LOCAL_METHODS=YES
+    <doxygen:param>EXTRACT_ANON_NSPACES=YES
+
+    <doxygen:param>JAVADOC_AUTOBRIEF=YES
+    <doxygen:param>INTERNAL_DOCS=YES
+    <doxygen:param>CASE_SENSE_NAMES=YES
+    <doxygen:param>SORT_MEMBERS_CTORS_1ST=YES
+
+    <doxygen:param>WARNINGS=YES
+    <doxygen:param>WARN_IF_UNDOCUMENTED=YES
+    <doxygen:param>WARN_IF_DOC_ERROR=YES
+    <doxygen:param>WARN_NO_PARAMDOC=YES
+    <doxygen:param>WARN_AS_ERROR=NO
+
+    <doxygen:param>ENUM_VALUES_PER_LINE=1
+
+    <doxygen:param>HTML_DYNAMIC_MENUS=0
+
+    <doxygen:param>HTML_DYNAMIC_MENUS=NO
+    <doxygen:param>HTML_DYNAMIC_SECTIONS=NO
   ;

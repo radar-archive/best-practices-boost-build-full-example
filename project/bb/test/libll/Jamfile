@@ -3,4 +3,11 @@
 
 import testing ;
 
-run ../../../../test/ll/test_ll.cpp ../../../../project/bb/libll//libll ;
+path-constant root : ../../../.. ;
+
+alias support
+  : # sources
+    $(root)/project/bb/libll//libll
+  ;
+
+run $(root)/test/ll/test_ll.cpp support ;

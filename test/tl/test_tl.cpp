@@ -3,14 +3,15 @@
 
 /// @file
 
+#define BOOST_TEST_MODULE test_tl
+
+#include "boost/test/included/unit_test.hpp"
+
 #include <iostream>
 
 #include "tl/tl.hpp"
 
-int
-main ()
+BOOST_AUTO_TEST_CASE (test_tl_all)
 {
    std::cout << tl::s << "\n";
-
-   return 0;
 }

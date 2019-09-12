@@ -3,6 +3,21 @@
 
 import testing ;
 
+explicit install ;
+alias install
+  : # sources
+    project/bb/example//install
+    project/bb/libll//install
+    project/bb/libtl//install
+  ;
+
+explicit documentation ;
+alias documentation
+  : # sources
+    project/bb/libll//api.html
+    project/bb/libtl//api.html
+  ;
+
 build-project project/bb/example ;
 
 build-project project/bb/libll ;

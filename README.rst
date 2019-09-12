@@ -7,14 +7,18 @@ Boost.Build Full Example
 .. contents::
 
 This example shows a Boost.Build build system that attempts to
-illustrate the approach described in the guidelines.
+illustrate the approach described in the guidelines.  It is a larger
+example with several libraries, executables, and unit tests
+defined. The structure is laid out as in the Boost.Build examples to
+help live next to them, have commonality.
 
-This project contains a C++ main program, a C++ library and tests, and
-a C++ template library and tests.
+The full example requires Boost.Test from the Boost C++ Libraries is
+installed on the system.
 
 To build and run the tests for the example, run the following command
 from the root directory.
 
 .. code::
 
-   b2
+   b2 documentation
+   b2 install --prefix=tmp
