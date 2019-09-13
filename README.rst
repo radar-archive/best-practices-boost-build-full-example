@@ -6,11 +6,9 @@ Boost.Build Full Example
 
 .. contents::
 
-This example shows a Boost.Build build system that attempts to
-illustrate the approach described in the guidelines.  It is a larger
-example with several libraries, executables, and unit tests
-defined. The structure is laid out as in the Boost.Build examples to
-help live next to them, have commonality.
+This example contains a larger example with several libraries,
+executables, and unit tests defined. The structure is laid out as in
+the Boost.Build examples to help live next to them, have commonality.
 
 The full example requires Boost.Test from the Boost C++ Libraries is
 installed on the system.
