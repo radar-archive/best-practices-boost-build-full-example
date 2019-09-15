@@ -16,7 +16,7 @@ installed on the system.
 To build and run the tests for the example, run the following command
 from the root directory.
 
-.. code::
+.. code:: shell
 
    bjam documentation
    bjam install --prefix=tmp
