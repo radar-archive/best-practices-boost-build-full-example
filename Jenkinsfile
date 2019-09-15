@@ -12,7 +12,7 @@ pipeline {
     }
 
     environment {
-        DESTDIR = "${WORKSPACE}/installed"
+        PREFIX = "${WORKSPACE}/installed"
     }
 
     stages {
@@ -67,7 +67,7 @@ pipeline {
         }
         stage('Install') {
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test -j 8 -a variant=release install --prefix=${DESTDIR}'
+                sh 'bjam --user-config=tmp-user-config.jam --verbose-test -j 8 -a variant=release install --prefix=${PREFIX}'
             }
         }
     }
