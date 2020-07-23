@@ -7,6 +7,7 @@ pipeline {
             registryUrl 'https://docker.inradar.net'
             registryCredentialsId 'radar-docker-registry'
             image 'docker.inradar.net/ubuntu-20.04-boost:0.2.0'
+            label 'docker'
         }
     }
 
