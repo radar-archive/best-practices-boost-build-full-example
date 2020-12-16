@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug variant=release'
+                sh 'bjam --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug,release'
 
                 recordIssues(tools: [gcc4()])
             }
@@ -60,7 +60,7 @@ pipeline {
             }
 
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test variant=debug variant=release'
+                sh 'bjam --user-config=tmp-user-config.jam --verbose-test variant=debug,release'
 
                 junit '*.xml'
             }
