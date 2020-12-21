@@ -18,5 +18,5 @@ from the root directory.
 
 .. code:: shell
 
-   bjam documentation
-   bjam install --prefix=tmp
+   b2 documentation
+   b2 install --prefix=tmp
