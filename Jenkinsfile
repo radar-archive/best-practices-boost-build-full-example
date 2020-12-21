@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Documentation') {
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test documentation'
+                sh 'b2 --user-config=tmp-user-config.jam --verbose-test documentation'
 
                 recordIssues(tools: [doxygen()])
 
@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug,release'
+                sh 'b2 --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug,release'
 
                 recordIssues(tools: [gcc4()])
             }
@@ -60,14 +60,14 @@ pipeline {
             }
 
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test variant=debug,release'
+                sh 'b2 --user-config=tmp-user-config.jam --verbose-test variant=debug,release'
 
                 junit '*.xml'
             }
         }
         stage('Install') {
             steps {
-                sh 'bjam --user-config=tmp-user-config.jam --verbose-test variant=release install --prefix=${PREFIX}'
+                sh 'b2 --user-config=tmp-user-config.jam --verbose-test variant=release install --prefix=${PREFIX}'
             }
         }
     }
