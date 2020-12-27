@@ -26,9 +26,9 @@ pipeline {
         }
         stage('Documentation') {
             steps {
-                sh 'b2 --user-config=tmp-user-config.jam --verbose-test documentation'
+                sh 'b2 --user-config=tmp-user-config.jam --verbose-test documentation | tee doxygen.log'
 
-                recordIssues(tools: [doxygen()])
+                recordIssues(tools: [doxygen(pattern: 'doxygen.log')])
 
                 publishHTML([allowMissing: false,
                              alwaysLinkToLastBuild: true,
@@ -49,9 +49,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'b2 --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug,release'
+                sh 'b2 --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug,release | tee gcc.log'
 
-                recordIssues(tools: [gcc4()])
+                recordIssues(tools: [gcc4(pattern: 'gcc.log')])
             }
         }
         stage('Test') {
