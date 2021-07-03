@@ -27,31 +27,39 @@ pipeline {
         stage('Documentation') {
             steps {
                 sh 'b2 --user-config=tmp-user-config.jam --verbose-test documentation | tee doxygen.log'
+            }
+            post {
+                always {
+                    recordIssues(tools: [doxygen(pattern: 'doxygen.log')])
+                }
+                success {
+                    publishHTML([allowMissing: false,
+                                 alwaysLinkToLastBuild: true,
+                                 keepAll: false,
+                                 reportDir: 'project/bb/libll/html/api',
+                                 reportFiles: 'index.html',
+                                 reportName: 'libll API Reference Documentation',
+                                 reportTitles: ''])
 
-                recordIssues(tools: [doxygen(pattern: 'doxygen.log')])
-
-                publishHTML([allowMissing: false,
-                             alwaysLinkToLastBuild: true,
-                             keepAll: false,
-                             reportDir: 'project/bb/libll/html/api',
-                             reportFiles: 'index.html',
-                             reportName: 'libll API Reference Documentation',
-                             reportTitles: ''])
-
-                publishHTML([allowMissing: false,
-                             alwaysLinkToLastBuild: true,
-                             keepAll: false,
-                             reportDir: 'project/bb/libtl/html/api',
-                             reportFiles: 'index.html',
-                             reportName: 'libtl API Reference Documentation',
-                             reportTitles: ''])
+                    publishHTML([allowMissing: false,
+                                 alwaysLinkToLastBuild: true,
+                                 keepAll: false,
+                                 reportDir: 'project/bb/libtl/html/api',
+                                 reportFiles: 'index.html',
+                                 reportName: 'libtl API Reference Documentation',
+                                 reportTitles: ''])
+                    
+                }
             }
         }
         stage('Build') {
             steps {
                 sh 'b2 --user-config=tmp-user-config.jam --verbose-test project/bb/example variant=debug,release | tee gcc.log'
-
-                recordIssues(tools: [gcc4(pattern: 'gcc.log')])
+            }
+            post {
+                always {
+                    recordIssues(tools: [gcc4(pattern: 'gcc.log')])
+                }
             }
         }
         stage('Test') {
@@ -61,8 +69,11 @@ pipeline {
 
             steps {
                 sh 'b2 --user-config=tmp-user-config.jam --verbose-test variant=debug,release'
-
-                junit '*.xml'
+            }
+            post {
+                always {
+                    junit '*.xml'
+                }
             }
         }
         stage('Install') {
